@@ -8,16 +8,16 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.web.client.RestTemplate;
 
-import com.myproject.service.JSONUtil;
-import com.myproject.webservice.bean.NBATeam;
+import com.myproject.util.JSONUtil;
+import com.myproject.webservice.bean.NBATeamBean;
 
 public class NBAWebServiceImpl {
 
 	private final static String TEAM_URL = "https://data.nba.net/prod/v1/2020/teams.json";
 	private final static String SCORE_URL = "https://data.nba.net/prod/v2/20210122/scoreboard.json";
 
-	public static List<NBATeam> getTeams(int season) {
-		List<NBATeam> teams = new ArrayList<NBATeam>();
+	public static List<NBATeamBean> getTeams(int season) {
+		List<NBATeamBean> teams = new ArrayList<NBATeamBean>();
 
 		RestTemplate restTemplate = new RestTemplate();
 		String res;
@@ -38,7 +38,7 @@ public class NBAWebServiceImpl {
 						if (standard != null && standard.length() > 0) {
 							for (int i = 0; i < standard.length(); i++) {
 								JSONObject teamJSONObject = (JSONObject) standard.get(i);
-								NBATeam oneTeam = new NBATeam();
+								NBATeamBean oneTeam = new NBATeamBean();
 
 								oneTeam.setSeason(season);
 								oneTeam.setTeamId(String.valueOf(teamJSONObject.get("teamId")));

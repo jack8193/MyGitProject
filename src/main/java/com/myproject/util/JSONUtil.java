@@ -1,4 +1,4 @@
-package com.myproject.service;
+package com.myproject.util;
 
 import org.json.JSONObject;
 

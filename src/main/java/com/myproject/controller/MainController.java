@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.myproject.entity.StockInfoEntity;
+import com.myproject.dao.entity.StockInfoEntity;
 import com.myproject.model.AjaxResponse;
-import com.myproject.repository.StockInfoRepository;
+import com.myproject.dao.repository.StockInfoRepository;
 import com.myproject.webservice.NBAWebServiceImpl;
 import com.myproject.webservice.TWSEWebServiceImpl;
 

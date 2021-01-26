@@ -1,6 +1,6 @@
 package com.myproject.webservice.bean;
 
-public class NBATeam {
+public class NBATeamBean {
 
 	private int season;
 	private String teamId;
