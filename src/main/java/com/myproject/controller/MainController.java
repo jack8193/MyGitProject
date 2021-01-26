@@ -23,16 +23,19 @@ public class MainController {
 
 	@Autowired
 	StockInfoRepository stockInfoRepository;
+	
+	@Autowired
+	NBAWebServiceImpl nbaWebService;
 
 	@RequestMapping("/")
 	public String hello(Model model) {
-//		List<StockInfoEntity> allStockInfo = stockInfoRepository.testFind("2330", "台積電");
-//
-//		for (StockInfoEntity one : allStockInfo) {
-//			System.out.println(one.getStockId() + "," + one.getStockName());
-//		}
+		List<StockInfoEntity> allStockInfo = stockInfoRepository.testFind("2330", "台積電");
 
-		NBAWebServiceImpl.getTeams(2020);
+		for (StockInfoEntity one : allStockInfo) {
+			System.out.println(one.getStockId() + "," + one.getStockName());
+		}
+
+		nbaWebService.getTeams(2020);
 
 		model.addAttribute("name", "Main Controller hello().");
 		return "TestIndex";
