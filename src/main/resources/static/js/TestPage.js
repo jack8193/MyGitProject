@@ -11,7 +11,8 @@ app.controller('myCtrl', function($scope, $http) {
 			url: '/testAngularJS',
 			data: null
 		}).then(function(res) {
-			alert(res.data.returnCode + "!!!");
+			alert("res.data.returnCode : " + res.data.returnCode + "!!!");
+			console.log("---testAngularJS()---");
 			console.log(res);
 			$scope.angularString = res.data.returnObj.testAngularJSKey;
 		}).catch(function(e) {
@@ -29,8 +30,9 @@ function testJSAjax() {
 		//data: {id: id, status: status},
 		url: "/testJSAjax",
 		success: function(data) {
-			alert(data.returnCode + "!!!");
+			alert("data.returnCode : " + data.returnCode + "!!!");
 			name = "testJSAjax() success!!!"; // doesn't work
+			console.log("---testJSAjax()---");
 			console.log(data);
 			console.log(data.returnObj);
 		},
