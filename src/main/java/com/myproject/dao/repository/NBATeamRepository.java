@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.myproject.dao.entity.NBATeamEntity;
 
+@Repository
 public interface NBATeamRepository extends JpaRepository<NBATeamEntity, Long> {
 
 	List<NBATeamEntity> findAll();
