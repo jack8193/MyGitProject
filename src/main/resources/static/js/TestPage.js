@@ -14,6 +14,11 @@ app.controller('myCtrl', function($scope, $http) {
 			alert("res.data.returnCode : " + res.data.returnCode + "!!!");
 			console.log("---testAngularJS()---");
 			console.log(res);
+			
+			if (res.data.returnCode == "SUCCESS") {
+				console.log(res.data.returnCode.code); // undefined
+				console.log("==SUCCESS");
+			}
 			$scope.angularString = res.data.returnObj.testAngularJSKey;
 		}).catch(function(e) {
 			alert("error testAngularJS().");
