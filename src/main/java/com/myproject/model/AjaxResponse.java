@@ -2,18 +2,20 @@ package com.myproject.model;
 
 import java.util.Map;
 
-public class AjaxResponse {
-	
-	String returnCode;
-	String message;
-	
-	Map<String, Object> returnObj;
+import com.myproject.model.constant.ResponseType;
 
-	public String getReturnCode() {
+public class AjaxResponse {
+
+	ResponseType returnCode;
+	String message;
+
+	Map<String, Object> returnObj;
+	
+	public ResponseType getReturnCode() {
 		return returnCode;
 	}
 
-	public void setReturnCode(String returnCode) {
+	public void setReturnCode(ResponseType returnCode) {
 		this.returnCode = returnCode;
 	}
 
@@ -32,5 +34,5 @@ public class AjaxResponse {
 	public void setReturnObj(Map<String, Object> returnObj) {
 		this.returnObj = returnObj;
 	}
-	
+
 }

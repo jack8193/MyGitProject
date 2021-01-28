@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.myproject.model.AjaxResponse;
+import com.myproject.model.constant.ResponseType;
 
 @Controller
 public class TestController {
@@ -33,7 +34,7 @@ public class TestController {
 
 		obj.put("testAngularJSKey", "thisTestAngularJSValue");
 
-		result.setReturnCode("testAngularJS SUCCESS");
+		result.setReturnCode(ResponseType.SUCCESS);
 		result.setReturnObj(obj);
 
 		return result;
@@ -50,7 +51,7 @@ public class TestController {
 
 		obj.put("testJSAjaxKey", "testJSAjaxValue");
 
-		result.setReturnCode("SUCCESS");
+		result.setReturnCode(ResponseType.SUCCESS);
 		result.setReturnObj(obj);
 
 		return result;
