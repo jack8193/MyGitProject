@@ -12,7 +12,7 @@ import com.myproject.model.AjaxResponse;
 import com.myproject.model.constant.ResponseType;
 
 @Controller
-public class TestController {
+public class TestController extends BaseController {
 	
 	@RequestMapping("/testPage")
 	public ModelAndView testPage() {
