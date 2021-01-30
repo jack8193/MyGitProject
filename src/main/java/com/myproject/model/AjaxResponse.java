@@ -1,5 +1,6 @@
 package com.myproject.model;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import com.myproject.model.constant.ResponseType;
@@ -10,7 +11,7 @@ public class AjaxResponse {
 	String message;
 
 	Map<String, Object> returnObj;
-	
+
 	public ResponseType getReturnCode() {
 		return returnCode;
 	}
@@ -31,8 +32,9 @@ public class AjaxResponse {
 		return returnObj;
 	}
 
-	public void setReturnObj(Map<String, Object> returnObj) {
-		this.returnObj = returnObj;
+	public void setReturnObj(String returnKey, Object returnObj) {
+		this.returnObj = new HashMap<String, Object>();
+		this.returnObj.put(returnKey, returnObj);
 	}
 
 }

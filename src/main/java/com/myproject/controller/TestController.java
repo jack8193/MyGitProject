@@ -13,7 +13,7 @@ import com.myproject.model.constant.ResponseType;
 
 @Controller
 public class TestController extends BaseController {
-	
+
 	@RequestMapping("/testPage")
 	public ModelAndView testPage() {
 		ModelAndView view = new ModelAndView("test/TestPage");
@@ -22,7 +22,7 @@ public class TestController extends BaseController {
 
 		return view;
 	}
-	
+
 	/**
 	 * Angular JS Ajax
 	 */
@@ -35,7 +35,7 @@ public class TestController extends BaseController {
 		obj.put("testAngularJSKey", "thisTestAngularJSValue");
 
 		result.setReturnCode(ResponseType.SUCCESS);
-		result.setReturnObj(obj);
+		result.setReturnObj("obj", obj);
 
 		return result;
 	}
@@ -52,9 +52,9 @@ public class TestController extends BaseController {
 		obj.put("testJSAjaxKey", "testJSAjaxValue");
 
 		result.setReturnCode(ResponseType.SUCCESS);
-		result.setReturnObj(obj);
+		result.setReturnObj("obj", obj);
 
 		return result;
 	}
-	
+
 }
