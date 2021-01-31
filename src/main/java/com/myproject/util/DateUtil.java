@@ -5,17 +5,34 @@ import java.util.Date;
 
 public class DateUtil {
 
-	public static Date getDate(String yyyyMMdd) {
-		Date date = null;
-		SimpleDateFormat sdf = null;		
-		
+	public static final String FORMAT_YYYY = "yyyy";
+	public static final String FORMAT_YYYYMMDD = "yyyyMMdd";
+	public static final String FORMAT_YYYYMMDDHHMMSS = "yyyy/MM/dd HH:mm:ss";
+
+	public static Date convertStringToDate(String string, String format) {
+		Date result = null;
+		SimpleDateFormat sdf = null;
+
 		try {
-			sdf = new SimpleDateFormat("yyyyMMdd");
-			date = sdf.parse(yyyyMMdd);
+			sdf = new SimpleDateFormat(format);
+			result = sdf.parse(string);
 		} catch (Exception e) {
-			date = null;
+			result = new Date();
 		}
-		
-		return date;
+
+		return result;
 	}
+
+	public static String convertDateToString(Date date, String format) {
+		String result = null;
+
+		try {
+			result = new SimpleDateFormat(format).format(date);
+		} catch (Exception e) {
+			result = new SimpleDateFormat(FORMAT_YYYYMMDDHHMMSS).format(new Date());
+		}
+
+		return result;
+	}
+
 }
