@@ -3,25 +3,20 @@
  */
 var mainApp = angular.module('mainApp', ['ngSanitize', 'commonModule']);
 
-mainApp.controller('mainCtrl', function($scope, $interval, $sce, commonService) {
+mainApp.controller('mainCtrl', function($scope, $interval, commonService) {
 
-	$scope.currentPage = 'html/views/stock.html';
+	$scope.nowTime = new Date().toLocaleTimeString();
 
-	$scope.mainCtrlString = "This is from mainCtrl : mainCtrlString";
-
-	$scope.init = function() {
-		$scope.nowTime = new Date().toLocaleTimeString();
-
-		commonService.ajax('/loadMainPage', null, function(res) {
-			$scope.menu = res.returnObj.menu;
-		});
-	};
+	// Init
+	commonService.ajax('/loadMainPage', null, function(res) {
+		$scope.copyright = res.returnObj.copyright;
+		$scope.menu = res.returnObj.menu;
+		$scope.currentPage = res.returnObj.currentPage;
+	});
 
 	$scope.clickMenu = function(url) {
 		$scope.currentPage = url;
 	};
-
-	$scope.init();
 
 	// display nowTime
 	$interval(function() {
@@ -30,7 +25,7 @@ mainApp.controller('mainCtrl', function($scope, $interval, $sce, commonService) 
 
 });
 
-mainApp.directive('loadMyPage', function() {
+mainApp.directive('loadPage', function() {
 	return {
 		restrict: 'AE',
 		replace: true,

@@ -11,6 +11,7 @@
 <script type="text/javascript" src="/js/common.js"></script>
 <script type="text/javascript" src="/js/mainPage.js"></script>
 <script type="text/javascript" src="/js/views/nba.js"></script>
+<script type="text/javascript" src="/js/views/stock.js"></script>
 
 <title>My Project</title>
 </head>
@@ -21,22 +22,10 @@
 	<br />
 	<br />
 
-
 	<span ng-repeat="m in menu">
 		<button id="{{m.menuId}}" ng-click="clickMenu(m.url)"
 			ng-show="{{m.show}}">{{m.wording}}</button>
 	</span>
-
-	<!-- 
-	<br />smallPage
-	<br />
-	<div ng-bind-html="loadPage"></div>
-	<br />
- -->
-
-
-
-	<div>mainCtrlString : {{mainCtrlString}}</div>
 
 	<!--
 	<br />ng-include :
@@ -44,13 +33,13 @@
 	<div ng-include="'html/views/nba.html'" ng-controller="nbaCtrl"></div>
  -->
 
-
-
+	<br />
 	<br />Directive :
 	<br />
-	<div load-my-page></div>
-
+	<div load-page></div>
 
 </body>
-<div th:text=" ${copyright}" /></div>
+<footer>
+	<p>{{copyright}}</p>
+</footer>
 </html>

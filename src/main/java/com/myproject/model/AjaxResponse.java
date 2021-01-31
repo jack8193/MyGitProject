@@ -32,8 +32,10 @@ public class AjaxResponse {
 		return returnObj;
 	}
 
-	public void setReturnObj(String returnKey, Object returnObj) {
-		this.returnObj = new HashMap<String, Object>();
+	public void addReturnObj(String returnKey, Object returnObj) {
+		if (getReturnObj() == null) {
+			this.returnObj = new HashMap<String, Object>();
+		}
 		this.returnObj.put(returnKey, returnObj);
 	}
 

@@ -4,10 +4,6 @@
 var commonModule = angular.module('commonModule', []);
 
 commonModule.service('commonService', function($http) {
-	
-	this.testF = function() {
-		alert("commonService : testF");
-	};
 
 	this.ajax = function(url, data, successCallBack, errorCallBack) {
 		$http({
@@ -33,17 +29,4 @@ commonModule.service('commonService', function($http) {
 		});
 	};
 
-	this.getHTML = function(url, data, successCallBack, errorCallBack) {
-		$http({
-			method: 'POST',
-			url: url,
-			data: data
-		}).then(function(res) {
-			successCallBack(res.data);
-		}).catch(function(e) {
-			if (errorCallBack) {
-				errorCallBack(e);
-			}
-		});
-	};
 });

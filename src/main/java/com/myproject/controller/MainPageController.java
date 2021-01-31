@@ -22,10 +22,7 @@ import com.myproject.util.DateUtil;
 public class MainPageController extends BaseController {
 
 	@RequestMapping("/")
-	public String mainPage(Map<String, Object> model) {
-		ModelAndView view = new ModelAndView("mainPage");
-		view.addObject("copyright", Version.getCopyRight());
-
+	public String mainPage() {
 		return "mainPage";
 	}
 
@@ -50,7 +47,9 @@ public class MainPageController extends BaseController {
 		l.add(m1);
 		l.add(m2);
 
-		result.setReturnObj("menu", l);
+		result.addReturnObj("copyright", Version.getCopyRight());
+		result.addReturnObj("menu", l);
+		result.addReturnObj("currentPage", "html/views/stock.html");
 
 		result.setReturnCode(ResponseType.SUCCESS);
 		return result;
