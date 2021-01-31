@@ -5,7 +5,7 @@ public class MenuItem {
 	private String menuId;
 	private String wording;
 	private String url;
-	private boolean isShow;
+	private boolean show;
 
 	public String getMenuId() {
 		return menuId;
@@ -32,11 +32,11 @@ public class MenuItem {
 	}
 
 	public boolean isShow() {
-		return isShow;
+		return show;
 	}
 
-	public void setShow(boolean isShow) {
-		this.isShow = isShow;
+	public void setShow(boolean show) {
+		this.show = show;
 	}
 
 }
