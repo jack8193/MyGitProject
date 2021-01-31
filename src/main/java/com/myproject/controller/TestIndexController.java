@@ -23,7 +23,7 @@ import com.myproject.webservice.NBAWebServiceImpl;
 import com.myproject.webservice.TWSEWebServiceImpl;
 
 @Controller
-public class MainController extends BaseController {
+public class TestIndexController extends BaseController {
 
 	@Autowired
 	StockInfoRepository stockInfoRepository;
@@ -46,6 +46,6 @@ public class MainController extends BaseController {
 		System.out.println(ResponseType.valueOf("ERROR"));
 
 		model.addAttribute("name", "01/29 Main Controller hello().");
-		return "TestIndex";
+		return "/test/testIndex";
 	}
 }
