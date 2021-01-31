@@ -1,13 +1,11 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html>
 <head>
 <meta charset="BIG5">
 <script type="text/javascript"
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-sanitize.js"></script>
 <script type="text/javascript" src="/js/common.js"></script>
 <script type="text/javascript" src="/js/mainPage.js"></script>
 <script type="text/javascript" src="/js/views/nba.js"></script>
@@ -15,6 +13,7 @@
 
 <title>My Project</title>
 </head>
+
 <body ng-app="mainApp" ng-controller="mainCtrl">
 	<b>This is templates/mainPage.html.</b>
 	<div>{{nowTime}}</div>
@@ -27,18 +26,13 @@
 			ng-show="{{m.show}}">{{m.wording}}</button>
 	</span>
 
-	<!--
-	<br />ng-include :
-	<br />
-	<div ng-include="'html/views/nba.html'" ng-controller="nbaCtrl"></div>
- -->
-
 	<br />
 	<br />Directive :
 	<br />
 	<div load-page></div>
 
 </body>
+
 <footer>
 	<p>{{copyright}}</p>
 </footer>

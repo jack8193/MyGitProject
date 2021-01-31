@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
+import com.myproject.model.AjaxResponse;
+import com.myproject.model.constant.ResponseType;
+
 public class BaseController {
 
 	protected HttpServletRequest getHttpRequest() {
@@ -45,10 +48,12 @@ public class BaseController {
 
 	@ExceptionHandler(Exception.class)
 	@ResponseBody
-	public String testException(Exception ex) {
-		ex.printStackTrace();
+	public AjaxResponse handleException(Exception ex) {
+		AjaxResponse result = new AjaxResponse();
 
-		return "Something went wrong...<BR/><BR/>" + ExceptionUtils.getStackTrace(ex);
+		result.setMessage(ExceptionUtils.getStackTrace(ex));
+		result.setReturnCode(ResponseType.ERROR);
+		return result;
 	}
 
 }

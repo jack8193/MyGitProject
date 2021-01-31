@@ -55,10 +55,4 @@ public class MainPageController extends BaseController {
 		return result;
 	}
 
-	@RequestMapping("/stock")
-	public ModelAndView stock() {
-		ModelAndView view = new ModelAndView("views/stock");
-		return view;
-	}
-
 }

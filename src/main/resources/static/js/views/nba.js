@@ -5,10 +5,14 @@
 // console.log(mainApp);
 
 mainApp.controller('nbaCtrl', function($scope, commonService) {
+
+	$scope.currentPage = "nbaCtrl html/views/nba.html";
 	
-	$scope.init = function() {
-		alert('nbaCtrl init');
-	}
-	
-	$scope.init();
+	// Init	
+	commonService.ajax('/loadNBA', null, function(res) {
+		$scope.nbaTeam = res.returnObj.nbaTeam;
+	}, function(error) {
+		$scope.currentPage = error.message;
+	});
+
 });

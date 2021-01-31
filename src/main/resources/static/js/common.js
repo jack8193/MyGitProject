@@ -20,12 +20,14 @@ commonModule.service('commonService', function($http) {
 					alert('httpPost WARNING');
 					break;
 				default:
-					alert('httpPost DEFAULT');
+					alert(url + ' ERROR');
+
+					if (errorCallBack) {
+						errorCallBack(res.data);
+					}
 			}
-		}).catch(function(e) {
-			if (errorCallBack) {
-				errorCallBack(e);
-			}
+		}).catch(function(error) {
+			alert('ajax ERROR');
 		});
 	};
 

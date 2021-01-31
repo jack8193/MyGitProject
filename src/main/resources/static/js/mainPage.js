@@ -1,7 +1,7 @@
 /**
  * mainPage.html
  */
-var mainApp = angular.module('mainApp', ['ngSanitize', 'commonModule']);
+var mainApp = angular.module('mainApp', ['commonModule']);
 
 mainApp.controller('mainCtrl', function($scope, $interval, commonService) {
 
@@ -31,6 +31,7 @@ mainApp.directive('loadPage', function() {
 		replace: true,
 		scope: true,
 		template: '<div ng-include src="getURL()" ></div>',
+		// <div ng-include="'html/views/nba.html'" ng-controller="nbaCtrl"></div>
 		link: function(scope, element, attrs) {
 			scope.getURL = function() {
 				return scope.currentPage;
