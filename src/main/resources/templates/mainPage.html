@@ -8,24 +8,49 @@
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-sanitize.js"></script>
-<script type="text/javascript" src="/js/MainPage.js"></script>
+<script type="text/javascript" src="/js/common.js"></script>
+<script type="text/javascript" src="/js/mainPage.js"></script>
+<script type="text/javascript" src="/js/views/nba.js"></script>
 
 <title>My Project</title>
 </head>
 <body ng-app="mainApp" ng-controller="mainCtrl">
-	<p>This is mainPage.html.</p>
-	<div th:text=" ${name}" /></div>
-
-	<br /> myString : {{myString}}
+	<b>This is templates/mainPage.html.</b>
+	<div>{{nowTime}}</div>
 
 	<br />
+	<br />
+
 
 	<span ng-repeat="m in menu">
-		<button id="{{m.menuId}}" ng-click="clickMenu(m.url)">{{m.menuId}}</button>
+		<button id="{{m.menuId}}" ng-click="clickMenu(m.url)"
+			ng-show="{{m.show}}">{{m.wording}}</button>
 	</span>
 
+	<!-- 
 	<br />smallPage
 	<br />
 	<div ng-bind-html="loadPage"></div>
+	<br />
+ -->
+
+
+
+	<div>mainCtrlString : {{mainCtrlString}}</div>
+
+	<!--
+	<br />ng-include :
+	<br />
+	<div ng-include="'html/views/nba.html'" ng-controller="nbaCtrl"></div>
+ -->
+
+
+
+	<br />Directive :
+	<br />
+	<div load-my-page></div>
+
+
 </body>
+<div th:text=" ${copyright}" /></div>
 </html>

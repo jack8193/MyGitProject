@@ -1,41 +1,45 @@
 /**
  * mainPage.html
  */
-var mainApp = angular.module('mainApp', ['ngSanitize']);
+var mainApp = angular.module('mainApp', ['ngSanitize', 'commonModule']);
 
-mainApp.controller('mainCtrl', function($scope, $http, $sce) {
-	$scope.myString = "mainCtrl : mainPage.js";
+mainApp.controller('mainCtrl', function($scope, $interval, $sce, commonService) {
+
+	$scope.currentPage = 'html/views/stock.html';
+
+	$scope.mainCtrlString = "This is from mainCtrl : mainCtrlString";
 
 	$scope.init = function() {
-		$http({
-			method: 'POST',
-			url: '/loadMainPage',
-			data: null
-		}).then(function(res) {
-			alert("$scope.init SUCCESS");
-			console.log(res);
-			$scope.menu = res.data.returnObj.menu;
-			$scope.myString = res.data.message;
-		}).catch(function(e) {
-			console.log(e);
+		$scope.nowTime = new Date().toLocaleTimeString();
+
+		commonService.ajax('/loadMainPage', null, function(res) {
+			$scope.menu = res.returnObj.menu;
 		});
 	};
-	
+
 	$scope.clickMenu = function(url) {
-		$http({
-			method: 'POST',
-			url: url,
-			data: null
-		}).then(function(res) {
-			alert("$scope.clickMenu SUCCESS");
-			console.log(res);
-			//$scope.myString = res.data.message;
-			
-			$scope.loadPage = $sce.trustAsHtml(res.data);
-		}).catch(function(e) {
-			console.log(e);
-		});
+		$scope.currentPage = url;
 	};
 
 	$scope.init();
+
+	// display nowTime
+	$interval(function() {
+		$scope.nowTime = new Date().toLocaleTimeString();
+	}, 1000);
+
+});
+
+mainApp.directive('loadMyPage', function() {
+	return {
+		restrict: 'AE',
+		replace: true,
+		scope: true,
+		template: '<div ng-include src="getURL()" ></div>',
+		link: function(scope, element, attrs) {
+			scope.getURL = function() {
+				return scope.currentPage;
+			}
+		}
+	};
 });
