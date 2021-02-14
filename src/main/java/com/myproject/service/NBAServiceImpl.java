@@ -30,6 +30,7 @@ public class NBAServiceImpl {
 
 			if (teams != null && !teams.isEmpty()) {
 				for (NBATeamBean bean : teams) {
+					nbaTeamRepository.save(new NBATeamEntity(bean));
 					result.add(new NBATeamEntity(bean));
 				}
 			}

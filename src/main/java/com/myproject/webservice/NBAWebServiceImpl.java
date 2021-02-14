@@ -4,14 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import com.myproject.dao.entity.NBATeamEntity;
-import com.myproject.dao.repository.NBATeamRepository;
 import com.myproject.util.JSONUtil;
 import com.myproject.webservice.bean.NBATeamBean;
 
@@ -20,9 +16,6 @@ public class NBAWebServiceImpl {
 
 	private final static String TEAM_URL = "https://data.nba.net/prod/v1/2020/teams.json";
 	private final static String SCORE_URL = "https://data.nba.net/prod/v2/20210122/scoreboard.json";
-
-	@Autowired
-	NBATeamRepository nbaTeamRepository;
 
 	public List<NBATeamBean> getTeams(int season) {
 		List<NBATeamBean> result = new ArrayList<NBATeamBean>();
@@ -57,7 +50,6 @@ public class NBAWebServiceImpl {
 
 //								System.out.println(i + ":" + oneTeam);
 
-								nbaTeamRepository.save(new NBATeamEntity(oneTeam));
 								result.add(oneTeam);
 							}
 						}
