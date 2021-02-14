@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.Table;
 
+import com.myproject.webservice.bean.NBATeamBean;
+
 @IdClass(NBATeamEntity.NBATeamId.class)
 @Entity
 @Table(name = "nba_team")
@@ -34,6 +36,20 @@ public class NBATeamEntity implements Serializable {
 	
 	@Column(name="city")
 	private String city;
+	
+	public NBATeamEntity() {
+		
+	}
+
+	public NBATeamEntity(NBATeamBean nbaTeamBean) {
+		super();
+		this.season = nbaTeamBean.getSeason();
+		this.teamId = nbaTeamBean.getTeamId();
+		this.fullName = nbaTeamBean.getFullName();
+		this.triCode = nbaTeamBean.getTriCode();
+		this.confName = nbaTeamBean.getConfName();
+		this.city = nbaTeamBean.getCity();
+	}
 
 	public int getSeason() {
 		return season;

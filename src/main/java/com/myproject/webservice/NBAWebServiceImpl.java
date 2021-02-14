@@ -25,7 +25,7 @@ public class NBAWebServiceImpl {
 	NBATeamRepository nbaTeamRepository;
 
 	public List<NBATeamBean> getTeams(int season) {
-		List<NBATeamBean> teams = new ArrayList<NBATeamBean>();
+		List<NBATeamBean> result = new ArrayList<NBATeamBean>();
 
 		RestTemplate restTemplate = new RestTemplate();
 		String res;
@@ -46,7 +46,7 @@ public class NBAWebServiceImpl {
 						if (standard != null && standard.length() > 0) {
 							for (int i = 0; i < standard.length(); i++) {
 								JSONObject teamJSONObject = (JSONObject) standard.get(i);
-								NBATeamEntity oneTeam = new NBATeamEntity();
+								NBATeamBean oneTeam = new NBATeamBean();
 
 								oneTeam.setSeason(season);
 								oneTeam.setTeamId(String.valueOf(teamJSONObject.get("teamId")));
@@ -55,9 +55,10 @@ public class NBAWebServiceImpl {
 								oneTeam.setConfName(String.valueOf(teamJSONObject.get("confName")));
 								oneTeam.setCity(String.valueOf(teamJSONObject.get("city")));
 
-								System.out.println(i + ":" + oneTeam);
+//								System.out.println(i + ":" + oneTeam);
 
-								nbaTeamRepository.save(oneTeam);
+								nbaTeamRepository.save(new NBATeamEntity(oneTeam));
+								result.add(oneTeam);
 							}
 						}
 					}
@@ -67,24 +68,7 @@ public class NBAWebServiceImpl {
 			e.printStackTrace();
 		}
 
-		return teams;
-	}
-
-	public static void test() {
-		RestTemplate restTemplate = new RestTemplate();
-		String res = restTemplate.getForObject(NBAWebServiceImpl.TEAM_URL, String.class);
-
-		JSONObject jo = null;
-		try {
-			jo = new JSONObject(res);
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			System.out.println("new JSONObject() error!");
-		}
-
-		System.out.println(res);
-		System.out.println("-----");
-		System.out.println(jo);
+		return result;
 	}
 
 }

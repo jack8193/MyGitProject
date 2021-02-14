@@ -13,19 +13,20 @@ import com.myproject.dao.entity.NBATeamEntity;
 import com.myproject.dao.repository.NBATeamRepository;
 import com.myproject.model.AjaxResponse;
 import com.myproject.model.constant.ResponseType;
+import com.myproject.service.NBAServiceImpl;
 
 @Controller
 public class NBAController extends BaseController {
 	
 	@Autowired
-	NBATeamRepository nbaTeamRepository;
+	NBAServiceImpl nbaService;
 	
 	@RequestMapping("/loadNBA") 
 	@ResponseBody
 	public AjaxResponse loadNBA() {		
 		AjaxResponse result = new AjaxResponse();
 
-		List<NBATeamEntity> allNBATeam = nbaTeamRepository.findAll();
+		List<NBATeamEntity> allNBATeam = nbaService.getTeams(2020);
 		result.addReturnObj("nbaTeam", allNBATeam);
 		
 		result.setReturnCode(ResponseType.SUCCESS);
