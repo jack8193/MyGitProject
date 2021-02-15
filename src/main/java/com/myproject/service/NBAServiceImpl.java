@@ -9,7 +9,9 @@ import org.springframework.stereotype.Service;
 
 import com.myproject.dao.entity.NBATeamEntity;
 import com.myproject.dao.repository.NBATeamRepository;
+import com.myproject.util.DateUtil;
 import com.myproject.webservice.NBAWebServiceImpl;
+import com.myproject.webservice.bean.NBAGameBean;
 import com.myproject.webservice.bean.NBATeamBean;
 
 @Service
@@ -40,7 +42,11 @@ public class NBAServiceImpl {
 	}
 
 	public void getGames(Date date) {
+		List<NBAGameBean> result = nbaWebService.getGames(date);
 
+		for (int i = 0; i < result.size(); i++) {
+			System.out.println(result.get(i));
+		}
 	}
 
 }

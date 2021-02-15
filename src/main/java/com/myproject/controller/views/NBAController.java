@@ -14,6 +14,7 @@ import com.myproject.dao.repository.NBATeamRepository;
 import com.myproject.model.AjaxResponse;
 import com.myproject.model.constant.ResponseType;
 import com.myproject.service.NBAServiceImpl;
+import com.myproject.util.DateUtil;
 
 @Controller
 public class NBAController extends BaseController {
@@ -28,6 +29,8 @@ public class NBAController extends BaseController {
 
 		List<NBATeamEntity> allNBATeam = nbaService.getTeams(2020);
 		result.addReturnObj("nbaTeam", allNBATeam);
+		
+		nbaService.getGames(DateUtil.convertStringToDate("20210214", DateUtil.FORMAT_YYYYMMDD));
 		
 		result.setReturnCode(ResponseType.SUCCESS);
 		return result;
