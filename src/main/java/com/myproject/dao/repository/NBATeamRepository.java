@@ -13,7 +13,9 @@ import com.myproject.dao.entity.NBATeamEntity;
 public interface NBATeamRepository extends JpaRepository<NBATeamEntity, Long> {
 
 	List<NBATeamEntity> findAll();
-	
-	List<NBATeamEntity> findBySeason(int season);
-	
+
+	List<NBATeamEntity> findBySeason(String season);
+
+	List<NBATeamEntity> findBySeasonAndTeamId(String season, Long teamId);
+
 }

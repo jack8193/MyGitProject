@@ -1,44 +1,43 @@
 package com.myproject.webservice.bean;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class NBAGameBean {
 
-	private int season;
+	private String season;
 
 	private String gameId;
 	private String gameType;
-	private Date gameDate;
-	private int gameAttendance;
-	private boolean isGameActivated;
+	private String gameDate;
+	private String gameAttendance;
+	private String gameActivated;
 	private String gameClock;
-	private int gameDuration;
+	private String gameDuration;
 
 	private String arenaName;
 	private String arenaCity;
 	private String arenaCountry;
 
-	private int currentPeriod;
+	private String currentPeriod;
 
 	private String homeTeamId;
-	private int homeTeamSeasonWin;
-	private int homeTeamSeasonLoss;
-	private int homeTeamScore;
-	private List<Integer> homeTeamPeriodScore;
+	private String homeTeamSeasonWin;
+	private String homeTeamSeasonLoss;
+	private String homeTeamScore;
+	private List<String> homeTeamPeriodScore;
 
 	private String awayTeamId;
-	private int awayTeamSeasonWin;
-	private int awayTeamSeasonLoss;
-	private int awayTeamScore;
-	private List<Integer> awayTeamPeriodScore;
+	private String awayTeamSeasonWin;
+	private String awayTeamSeasonLoss;
+	private String awayTeamScore;
+	private List<String> awayTeamPeriodScore;
 
-	public int getSeason() {
+	public String getSeason() {
 		return season;
 	}
 
-	public void setSeason(int season) {
+	public void setSeason(String season) {
 		this.season = season;
 	}
 
@@ -58,35 +57,43 @@ public class NBAGameBean {
 		this.gameType = gameType;
 	}
 
-	public Date getGameDate() {
+	public String getGameDate() {
 		return gameDate;
 	}
 
-	public void setGameDate(Date gameDate) {
+	public void setGameDate(String gameDate) {
 		this.gameDate = gameDate;
 	}
 
-	public int getGameAttendance() {
+	public String getGameAttendance() {
 		return gameAttendance;
 	}
 
-	public void setGameAttendance(int gameAttendance) {
+	public void setGameAttendance(String gameAttendance) {
 		this.gameAttendance = gameAttendance;
 	}
 
-	public boolean isGameActivated() {
-		return isGameActivated;
+	public String getGameActivated() {
+		return gameActivated;
 	}
 
-	public void setGameActivated(boolean isGameActivated) {
-		this.isGameActivated = isGameActivated;
+	public void setGameActivated(String gameActivated) {
+		this.gameActivated = gameActivated;
 	}
 
-	public int getGameDuration() {
+	public String getGameClock() {
+		return gameClock;
+	}
+
+	public void setGameClock(String gameClock) {
+		this.gameClock = gameClock;
+	}
+
+	public String getGameDuration() {
 		return gameDuration;
 	}
 
-	public void setGameDuration(int gameDuration) {
+	public void setGameDuration(String gameDuration) {
 		this.gameDuration = gameDuration;
 	}
 
@@ -114,11 +121,11 @@ public class NBAGameBean {
 		this.arenaCountry = arenaCountry;
 	}
 
-	public int getCurrentPeriod() {
+	public String getCurrentPeriod() {
 		return currentPeriod;
 	}
 
-	public void setCurrentPeriod(int currentPeriod) {
+	public void setCurrentPeriod(String currentPeriod) {
 		this.currentPeriod = currentPeriod;
 	}
 
@@ -130,37 +137,37 @@ public class NBAGameBean {
 		this.homeTeamId = homeTeamId;
 	}
 
-	public int getHomeTeamSeasonWin() {
+	public String getHomeTeamSeasonWin() {
 		return homeTeamSeasonWin;
 	}
 
-	public void setHomeTeamSeasonWin(int homeTeamSeasonWin) {
+	public void setHomeTeamSeasonWin(String homeTeamSeasonWin) {
 		this.homeTeamSeasonWin = homeTeamSeasonWin;
 	}
 
-	public int getHomeTeamSeasonLoss() {
+	public String getHomeTeamSeasonLoss() {
 		return homeTeamSeasonLoss;
 	}
 
-	public void setHomeTeamSeasonLoss(int homeTeamSeasonLoss) {
+	public void setHomeTeamSeasonLoss(String homeTeamSeasonLoss) {
 		this.homeTeamSeasonLoss = homeTeamSeasonLoss;
 	}
 
-	public int getHomeTeamScore() {
+	public String getHomeTeamScore() {
 		return homeTeamScore;
 	}
 
-	public void setHomeTeamScore(int homeTeamScore) {
+	public void setHomeTeamScore(String homeTeamScore) {
 		this.homeTeamScore = homeTeamScore;
 	}
 
-	public List<Integer> getHomeTeamPeriodScore() {
+	public List<String> getHomeTeamPeriodScore() {
 		return homeTeamPeriodScore;
 	}
 
-	public void addHomeTeamPeriodScore(int homeTeamPeriodScore) {
+	public void addHomeTeamPeriodScore(String homeTeamPeriodScore) {
 		if (getHomeTeamPeriodScore() == null) {
-			this.homeTeamPeriodScore = new ArrayList<Integer>();
+			this.homeTeamPeriodScore = new ArrayList<String>();
 		}
 		this.homeTeamPeriodScore.add(homeTeamPeriodScore);
 	}
@@ -173,60 +180,51 @@ public class NBAGameBean {
 		this.awayTeamId = awayTeamId;
 	}
 
-	public int getAwayTeamSeasonWin() {
+	public String getAwayTeamSeasonWin() {
 		return awayTeamSeasonWin;
 	}
 
-	public void setAwayTeamSeasonWin(int awayTeamSeasonWin) {
+	public void setAwayTeamSeasonWin(String awayTeamSeasonWin) {
 		this.awayTeamSeasonWin = awayTeamSeasonWin;
 	}
 
-	public int getAwayTeamSeasonLoss() {
+	public String getAwayTeamSeasonLoss() {
 		return awayTeamSeasonLoss;
 	}
 
-	public void setAwayTeamSeasonLoss(int awayTeamSeasonLoss) {
+	public void setAwayTeamSeasonLoss(String awayTeamSeasonLoss) {
 		this.awayTeamSeasonLoss = awayTeamSeasonLoss;
 	}
 
-	public int getAwayTeamScore() {
+	public String getAwayTeamScore() {
 		return awayTeamScore;
 	}
 
-	public void setAwayTeamScore(int awayTeamScore) {
+	public void setAwayTeamScore(String awayTeamScore) {
 		this.awayTeamScore = awayTeamScore;
 	}
 
-	public List<Integer> getAwayTeamPeriodScore() {
+	public List<String> getAwayTeamPeriodScore() {
 		return awayTeamPeriodScore;
 	}
 
-	public void addAwayTeamPeriodScore(int awayTeamPeriodScore) {
+	public void addAwayTeamPeriodScore(String awayTeamPeriodScore) {
 		if (getAwayTeamPeriodScore() == null) {
-			this.awayTeamPeriodScore = new ArrayList<Integer>();
+			this.awayTeamPeriodScore = new ArrayList<String>();
 		}
 		this.awayTeamPeriodScore.add(awayTeamPeriodScore);
-	}
-
-	public String getGameClock() {
-		return gameClock;
-	}
-
-	public void setGameClock(String gameClock) {
-		this.gameClock = gameClock;
 	}
 
 	@Override
 	public String toString() {
 		return "NBAGameBean [season=" + season + ", gameId=" + gameId + ", gameType=" + gameType + ", gameDate="
-				+ gameDate + ", gameAttendance=" + gameAttendance + ", isGameActivated=" + isGameActivated
-				+ ", gameClock=" + gameClock + ", gameDuration=" + gameDuration + ", arenaName=" + arenaName
-				+ ", arenaCity=" + arenaCity + ", arenaCountry=" + arenaCountry + ", currentPeriod=" + currentPeriod
-				+ ", homeTeamId=" + homeTeamId + ", homeTeamSeasonWin=" + homeTeamSeasonWin + ", homeTeamSeasonLoss="
-				+ homeTeamSeasonLoss + ", homeTeamScore=" + homeTeamScore + ", homeTeamPeriodScore="
-				+ homeTeamPeriodScore + ", awayTeamId=" + awayTeamId + ", awayTeamSeasonWin=" + awayTeamSeasonWin
-				+ ", awayTeamSeasonLoss=" + awayTeamSeasonLoss + ", awayTeamScore=" + awayTeamScore
-				+ ", awayTeamPeriodScore=" + awayTeamPeriodScore + "]";
+				+ gameDate + ", gameAttendance=" + gameAttendance + ", gameActivated=" + gameActivated + ", gameClock="
+				+ gameClock + ", gameDuration=" + gameDuration + ", arenaName=" + arenaName + ", arenaCity=" + arenaCity
+				+ ", arenaCountry=" + arenaCountry + ", currentPeriod=" + currentPeriod + ", homeTeamId=" + homeTeamId
+				+ ", homeTeamSeasonWin=" + homeTeamSeasonWin + ", homeTeamSeasonLoss=" + homeTeamSeasonLoss
+				+ ", homeTeamScore=" + homeTeamScore + ", homeTeamPeriodScore=" + homeTeamPeriodScore + ", awayTeamId="
+				+ awayTeamId + ", awayTeamSeasonWin=" + awayTeamSeasonWin + ", awayTeamSeasonLoss=" + awayTeamSeasonLoss
+				+ ", awayTeamScore=" + awayTeamScore + ", awayTeamPeriodScore=" + awayTeamPeriodScore + "]";
 	}
 
 }

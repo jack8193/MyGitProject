@@ -1,6 +1,7 @@
 package com.myproject.service;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -23,12 +24,43 @@ public class NBAServiceImpl {
 	@Autowired
 	NBAWebServiceImpl nbaWebService;
 
-	public List<NBATeamEntity> getTeams(int season) {
-		List<NBATeamEntity> result = nbaTeamRepository.findBySeason(season);
+	private final static int NBA_SEASON_MONTH = 6;
+	private final static int NBA_GAME_DATE = -1;
+
+	private String getNBASeason(Date date) {
+		String nbaSeason = null;
+		Calendar c = Calendar.getInstance();
+
+		c.setTime(date);
+
+		// Jan ~ Jun
+		if (c.get(Calendar.MONTH) < NBAServiceImpl.NBA_SEASON_MONTH) {
+			c.add(Calendar.YEAR, -1); // Last year
+		}
+
+		nbaSeason = DateUtil.convertDateToString(c.getTime(), DateUtil.FORMAT_YYYY);
+
+		return nbaSeason;
+	}
+
+	private String getNBADate(Date date) {
+		String nbaDate = null;
+		Calendar c = Calendar.getInstance();
+
+		c.setTime(date);
+		c.add(Calendar.DATE, NBAServiceImpl.NBA_GAME_DATE);
+
+		nbaDate = DateUtil.convertDateToString(c.getTime(), DateUtil.FORMAT_YYYYMMDD);
+
+		return nbaDate;
+	}
+
+	public List<NBATeamEntity> getTeams(Date season) {
+		List<NBATeamEntity> result = nbaTeamRepository.findBySeason(getNBASeason(season));
 
 		if (result == null || result.isEmpty()) {
 			result = new ArrayList<NBATeamEntity>();
-			List<NBATeamBean> teams = nbaWebService.getTeams(season);
+			List<NBATeamBean> teams = nbaWebService.getTeams(getNBASeason(season));
 
 			if (teams != null && !teams.isEmpty()) {
 				for (NBATeamBean bean : teams) {
@@ -41,12 +73,10 @@ public class NBAServiceImpl {
 		return result;
 	}
 
-	public void getGames(Date date) {
-		List<NBAGameBean> result = nbaWebService.getGames(date);
+	public List<NBAGameBean> getGames(Date date) {
+		List<NBAGameBean> result = nbaWebService.getGames(getNBADate(date));
 
-		for (int i = 0; i < result.size(); i++) {
-			System.out.println(result.get(i));
-		}
+		return result;
 	}
 
 }

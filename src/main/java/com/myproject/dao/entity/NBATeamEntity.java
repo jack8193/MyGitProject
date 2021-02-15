@@ -14,31 +14,31 @@ import com.myproject.webservice.bean.NBATeamBean;
 @Entity
 @Table(name = "nba_team")
 public class NBATeamEntity implements Serializable {
-	
+
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
-	@Column(name="season")
-	private int season;
-	
+	@Column(name = "season")
+	private String season;
+
 	@Id
-	@Column(name="team_id")
+	@Column(name = "team_id")
 	private String teamId;
-	
-	@Column(name="full_name")
+
+	@Column(name = "full_name")
 	private String fullName;
-	
-	@Column(name="tri_code")
+
+	@Column(name = "tri_code")
 	private String triCode;
-	
-	@Column(name="conf_name")
+
+	@Column(name = "conf_name")
 	private String confName;
-	
-	@Column(name="city")
+
+	@Column(name = "city")
 	private String city;
-	
+
 	public NBATeamEntity() {
-		
+
 	}
 
 	public NBATeamEntity(NBATeamBean nbaTeamBean) {
@@ -51,11 +51,11 @@ public class NBATeamEntity implements Serializable {
 		this.city = nbaTeamBean.getCity();
 	}
 
-	public int getSeason() {
+	public String getSeason() {
 		return season;
 	}
 
-	public void setSeason(int season) {
+	public void setSeason(String season) {
 		this.season = season;
 	}
 
@@ -97,8 +97,8 @@ public class NBATeamEntity implements Serializable {
 
 	public void setCity(String city) {
 		this.city = city;
-	}	
-	
+	}
+
 	@Override
 	public String toString() {
 		return "NBATeamEntity [season=" + season + ", teamId=" + teamId + ", fullName=" + fullName + ", triCode="
@@ -107,22 +107,26 @@ public class NBATeamEntity implements Serializable {
 
 	public static class NBATeamId implements Serializable {
 		private static final long serialVersionUID = 1L;
-		
-		private int season;
+
+		private String season;
 		private String teamId;
-		public int getSeason() {
+
+		public String getSeason() {
 			return season;
 		}
-		public void setSeason(int season) {
+
+		public void setSeason(String season) {
 			this.season = season;
 		}
+
 		public String getTeamId() {
 			return teamId;
 		}
+
 		public void setTeamId(String teamId) {
 			this.teamId = teamId;
 		}
-		
+
 	}
-	
+
 }

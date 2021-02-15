@@ -2,18 +2,18 @@ package com.myproject.webservice.bean;
 
 public class NBATeamBean {
 
-	private int season;
+	private String season;
 	private String teamId;
 	private String fullName;
 	private String triCode;
 	private String confName;
 	private String city;
 
-	public int getSeason() {
+	public String getSeason() {
 		return season;
 	}
 
-	public void setSeason(int season) {
+	public void setSeason(String season) {
 		this.season = season;
 	}
 
