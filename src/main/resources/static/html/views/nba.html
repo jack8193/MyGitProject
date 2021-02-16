@@ -1,8 +1,54 @@
+<style>
+	table, th, td {
+		border: 1px solid black;
+		border-collapse: collapse;
+	}
+	.td {
+		width: 100;
+	}
+</style>
+
 <div ng-controller="nbaCtrl">
 	<b>This is nba.html</b>
 	<br/>
-	currentPage : {{currentPage}}
+	currentPage : {{ currentPage }}
 	<br/>
 	<br/>
-	<li ng-repeat="team in nbaTeam">[{{$index+1}}] {{team.fullName}}</li>
+	<b>GameDate : {{ gameDate | date:'yyyy/MM/dd' }}</b>
+	<br/>
+	<br/>
+
+	<div ng-repeat="game in games">
+		[{{$index+1}}].&nbsp;{{ game.awayTeam.triCode }}&nbsp;&nbsp;v.s&nbsp;&nbsp;@{{ game.homeTeam.triCode }}
+		<table width="500">
+			<tr>
+				<td></td>
+				<td align="center">1</td>
+				<td align="center">2</td>
+				<td align="center">3</td>
+				<td align="center">4</td>
+				<td align="center" ng-if="game.homeTeamPeriodScore[4]">OT1</td>
+				<td align="center">T</td>
+			</tr>			
+			<tr>
+				<td>{{game.awayTeam.fullName}}</td>
+				<td align="center">{{game.awayTeamPeriodScore[0]}}</td>
+				<td align="center">{{game.awayTeamPeriodScore[1]}}</td>
+				<td align="center">{{game.awayTeamPeriodScore[2]}}</td>
+				<td align="center">{{game.awayTeamPeriodScore[3]}}</td>
+				<td align="center" ng-if="game.homeTeamPeriodScore[4]">{{game.awayTeamPeriodScore[4]}}</td>
+				<td align="center">{{game.awayTeamScore}}</td>
+			</tr>
+			<tr>
+				<td>{{game.homeTeam.fullName}}</td>
+				<td align="center">{{game.homeTeamPeriodScore[0]}}</td>
+				<td align="center">{{game.homeTeamPeriodScore[1]}}</td>
+				<td align="center">{{game.homeTeamPeriodScore[2]}}</td>
+				<td align="center">{{game.homeTeamPeriodScore[3]}}</td>
+				<td align="center" ng-if="game.homeTeamPeriodScore[4]">{{game.homeTeamPeriodScore[4]}}</td>
+				<td align="center">{{game.homeTeamScore}}</td>
+			</tr>
+		</table>
+		<br/>	
+	</div>
 </div>

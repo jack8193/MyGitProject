@@ -8,11 +8,14 @@ mainApp.controller('nbaCtrl', function($scope, commonService) {
 
 	$scope.currentPage = "nbaCtrl html/views/nba.html";
 	
+	$scope.gameDate = new Date();
+	$scope.games = [];
+	
 	// Init	
 	commonService.ajax('/loadNBA', null, function(res) {
-		$scope.nbaTeam = res.returnObj.nbaTeam;
+		$scope.gameDate = res.returnObj.gameDate;
 		
-		console.log(res.returnObj.nbaGame);
+		$scope.games = res.returnObj.nbaGame;
 	}, function(error) {
 		$scope.currentPage = error.message;
 	});

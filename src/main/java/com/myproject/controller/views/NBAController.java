@@ -27,8 +27,8 @@ public class NBAController extends BaseController {
 	public AjaxResponse loadNBA() {
 		AjaxResponse result = new AjaxResponse();
 		Date nowDate = new Date();
-
-		nowDate = DateUtil.convertStringToDate("20210215", DateUtil.FORMAT_YYYYMMDD);
+		
+		result.addReturnObj("gameDate", nowDate);
 
 		List<NBATeamEntity> allNBATeam = nbaService.getTeams(nowDate);
 		result.addReturnObj("nbaTeam", allNBATeam);
