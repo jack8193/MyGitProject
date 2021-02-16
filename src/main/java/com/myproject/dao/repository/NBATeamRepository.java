@@ -16,6 +16,6 @@ public interface NBATeamRepository extends JpaRepository<NBATeamEntity, Long> {
 
 	List<NBATeamEntity> findBySeason(String season);
 
-	List<NBATeamEntity> findBySeasonAndTeamId(String season, Long teamId);
+	List<NBATeamEntity> findBySeasonAndTeamId(String season, String teamId);
 
 }
