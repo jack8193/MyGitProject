@@ -49,7 +49,7 @@ public class MainPageController extends BaseController {
 
 		result.addReturnObj("copyright", Version.getCopyRight());
 		result.addReturnObj("menu", l);
-		result.addReturnObj("currentPage", "html/views/stock.html");
+		result.addReturnObj("currentPage", "html/views/nba.html");
 
 		result.setReturnCode(ResponseType.SUCCESS);
 		return result;
