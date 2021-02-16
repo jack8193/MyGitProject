@@ -12,6 +12,7 @@ import com.myproject.controller.BaseController;
 import com.myproject.dao.entity.NBATeamEntity;
 import com.myproject.model.AjaxResponse;
 import com.myproject.model.constant.ResponseType;
+import com.myproject.model.views.NBAGameVO;
 import com.myproject.service.NBAServiceImpl;
 import com.myproject.util.DateUtil;
 
@@ -32,7 +33,8 @@ public class NBAController extends BaseController {
 		List<NBATeamEntity> allNBATeam = nbaService.getTeams(nowDate);
 		result.addReturnObj("nbaTeam", allNBATeam);
 
-		nbaService.getGames(nowDate);
+		List<NBAGameVO> allNBAGame = nbaService.getGames(nowDate);
+		result.addReturnObj("nbaGame", allNBAGame);
 
 		result.setReturnCode(ResponseType.SUCCESS);
 		return result;
