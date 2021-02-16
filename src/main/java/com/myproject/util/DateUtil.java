@@ -2,6 +2,7 @@ package com.myproject.util;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.TimeZone;
 
 public class DateUtil {
 
@@ -15,6 +16,7 @@ public class DateUtil {
 
 		try {
 			sdf = new SimpleDateFormat(format);
+			sdf.setTimeZone(TimeZone.getTimeZone("GMT+8"));
 			result = sdf.parse(string);
 		} catch (Exception e) {
 			result = new Date();
