@@ -7,17 +7,21 @@
 mainApp.controller('nbaCtrl', function($scope, commonService) {
 
 	$scope.currentPage = "nbaCtrl html/views/nba.html";
-	
+
 	$scope.gameDate = new Date();
 	$scope.games = [];
-	
+
 	// Init	
-	commonService.ajax('/loadNBA', null, function(res) {
-		$scope.gameDate = res.returnObj.gameDate;
-		
-		$scope.games = res.returnObj.nbaGame;
-	}, function(error) {
-		$scope.currentPage = error.message;
-	});
+	$scope.getGames;
+
+	$scope.getGames = function() {
+		commonService.ajax('/getNBAGames', { gameDate: $scope.gameDate }, function(res) {
+			$scope.gameDate = res.returnObj.gameDate;
+
+			$scope.games = res.returnObj.nbaGame;
+		}, function(error) {
+			$scope.currentPage = error.message;
+		});
+	};
 
 });

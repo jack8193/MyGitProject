@@ -14,7 +14,10 @@
 	currentPage : {{ currentPage }}
 	<br/>
 	<br/>
+		<input type="date" ng-model="gameDate" ng-change="getGames()"/>
+	<br/>
 	<b>GameDate : {{ gameDate | date:'yyyy/MM/dd' }}</b>
+	<br/>
 	<br/>
 	<br/>
 
