@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.Table;
 
+import org.apache.commons.lang3.StringUtils;
+
 import com.myproject.util.DateUtil;
 import com.myproject.webservice.bean.NBAGameBean;
 
@@ -105,7 +107,8 @@ public class NBAGameEntity implements Serializable {
 		this.awayTeamId = nbaGameBean.getAwayTeamId();
 
 		try {
-			this.homeTeamScore = Integer.parseInt(nbaGameBean.getHomeTeamScore());
+			this.homeTeamScore = StringUtils.isBlank(nbaGameBean.getHomeTeamScore()) ? 0
+					: Integer.parseInt(nbaGameBean.getHomeTeamScore());
 
 			if (nbaGameBean.getHomeTeamPeriodScore() != null && !nbaGameBean.getHomeTeamPeriodScore().isEmpty()) {
 				this.homeTeamQ1 = Integer.parseInt(nbaGameBean.getHomeTeamPeriodScore().get(0));
@@ -130,7 +133,8 @@ public class NBAGameEntity implements Serializable {
 		}
 
 		try {
-			this.awayTeamScore = Integer.parseInt(nbaGameBean.getAwayTeamScore());
+			this.awayTeamScore = StringUtils.isBlank(nbaGameBean.getAwayTeamScore()) ? 0
+					: Integer.parseInt(nbaGameBean.getAwayTeamScore());
 
 			if (nbaGameBean.getAwayTeamPeriodScore() != null && !nbaGameBean.getAwayTeamPeriodScore().isEmpty()) {
 				this.awayTeamQ1 = Integer.parseInt(nbaGameBean.getAwayTeamPeriodScore().get(0));

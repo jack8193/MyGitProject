@@ -60,17 +60,14 @@ public class NBAServiceImpl {
 	}
 
 	public List<NBATeamEntity> getTeams(Date season) {
-		List<NBATeamEntity> result = nbaTeamRepository.findBySeason(getNBASeason(season));
+		List<NBATeamEntity> result = new ArrayList<NBATeamEntity>();
+		
+		List<NBATeamBean> teams = nbaWebService.getTeams(getNBASeason(season));
 
-		if (result == null || result.isEmpty()) {
-			result = new ArrayList<NBATeamEntity>();
-			List<NBATeamBean> teams = nbaWebService.getTeams(getNBASeason(season));
-
-			if (teams != null && !teams.isEmpty()) {
-				for (NBATeamBean bean : teams) {
-					nbaTeamRepository.save(new NBATeamEntity(bean));
-					result.add(new NBATeamEntity(bean));
-				}
+		if (teams != null && !teams.isEmpty()) {
+			for (NBATeamBean bean : teams) {
+				nbaTeamRepository.save(new NBATeamEntity(bean));
+				result.add(new NBATeamEntity(bean));
 			}
 		}
 

@@ -31,7 +31,7 @@ public class NBAController extends BaseController {
 	public AjaxResponse loadNBA(@RequestBody Map<String, Date> req) {
 		AjaxResponse result = new AjaxResponse();
 		//Date nowDate = new Date();
-		Date nowDate = req.get("nowDate");
+		Date nowDate = req.get("gameDate");
 		
 		result.addReturnObj("gameDate", nowDate);
 

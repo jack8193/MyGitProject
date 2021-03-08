@@ -11,9 +11,6 @@ mainApp.controller('nbaCtrl', function($scope, commonService) {
 	$scope.gameDate = new Date();
 	$scope.games = [];
 
-	// Init	
-	$scope.getGames;
-
 	$scope.getGames = function() {
 		commonService.ajax('/getNBAGames', { gameDate: $scope.gameDate }, function(res) {
 			$scope.gameDate = res.returnObj.gameDate;
@@ -23,5 +20,8 @@ mainApp.controller('nbaCtrl', function($scope, commonService) {
 			$scope.currentPage = error.message;
 		});
 	};
+	
+	// Init	
+	$scope.getGames();
 
 });
